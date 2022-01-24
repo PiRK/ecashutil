@@ -1,4 +1,4 @@
-package bchutil
+package ecashutil
 
 import "github.com/martinboehm/btcutil/chaincfg"
 

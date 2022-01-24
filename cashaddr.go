@@ -1,4 +1,4 @@
-package bchutil
+package ecashutil
 
 import (
 	"errors"
@@ -43,9 +43,9 @@ const (
 
 func init() {
 	Prefixes = make(map[string]string)
-	Prefixes[chaincfg.MainNetParams.Name] = "bitcoincash"
-	Prefixes[chaincfg.TestNet3Params.Name] = "bchtest"
-	Prefixes[chaincfg.RegressionNetParams.Name] = "bchreg"
+	Prefixes[chaincfg.MainNetParams.Name] = "ecash"
+	Prefixes[chaincfg.TestNet3Params.Name] = "ectest"
+	Prefixes[chaincfg.RegressionNetParams.Name] = "ecreg"
 }
 
 type data []byte
@@ -361,7 +361,7 @@ func CheckDecodeCashAddress(input string) (result []byte, prefix string, t Addre
 }
 
 // encodeAddress returns a human-readable payment address given a ripemd160 hash
-// and prefix which encodes the bitcoin cash network and address type.  It is used
+// and prefix which encodes the eCash network and address type.  It is used
 // in both pay-to-pubkey-hash (P2PKH) and pay-to-script-hash (P2SH) address
 // encoding.
 func encodeCashAddress(hash160 []byte, prefix string, t AddressType) string {
@@ -371,7 +371,7 @@ func encodeCashAddress(hash160 []byte, prefix string, t AddressType) string {
 // DecodeAddress decodes the string encoding of an address and returns
 // the Address if addr is a valid encoding for a known address type.
 //
-// The bitcoin cash network the address is associated with is extracted if possible.
+// The eCash network the address is associated with is extracted if possible.
 func DecodeAddress(addr string, defaultNet *chaincfg.Params) (btcutil.Address, error) {
 	pre, ok := Prefixes[defaultNet.Name]
 	if !ok {
@@ -454,7 +454,7 @@ func (a *CashAddressPubKeyHash) ScriptAddress() []byte {
 }
 
 // IsForNet returns whether or not the pay-to-pubkey-hash address is associated
-// with the passed bitcoin cash network.
+// with the passed eCash network.
 func (a *CashAddressPubKeyHash) IsForNet(net *chaincfg.Params) bool {
 	checkPre, ok := Prefixes[net.Name]
 	if !ok {
@@ -530,7 +530,7 @@ func (a *CashAddressScriptHash) ScriptAddress() []byte {
 }
 
 // IsForNet returns whether or not the pay-to-script-hash address is associated
-// with the passed bitcoin cash network.
+// with the passed eCash network.
 func (a *CashAddressScriptHash) IsForNet(net *chaincfg.Params) bool {
 	pre, ok := Prefixes[net.Name]
 	if !ok {

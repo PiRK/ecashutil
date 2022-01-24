@@ -1,4 +1,6 @@
-# bchutil
-Bitcoin Cash Utilities
+# ecashutil
+eCash Utilities
 
-Contains the bitcoin cash signing algorithm and some protocol configuration. This package removes the need to use a fork of btcd when working with Bitcoin Cash.
+This is a fork of bchutil
+
+Contains the eCash signing algorithm and some protocol configuration. This package removes the need to use a fork of btcd when working with eCash.
